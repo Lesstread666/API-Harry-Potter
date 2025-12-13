@@ -2,11 +2,13 @@ const apiUrl = 'https://potterapi-fedeperin.vercel.app/en/characters';
 const searchInput = document.querySelector("#searchInput");
 const results = document.querySelector(".results");
 
+const renderError = (message => {
+  results.insertAdjacentText('beforeend', message);
+})
+
 const searchCharacter = async () => {
   let searchValue = searchInput.value.trim();
-
   console.log(searchValue);
-
   const url = `${apiUrl}?search=${searchValue}`;
 
   try {
@@ -18,9 +20,10 @@ const searchCharacter = async () => {
     const character = await response.json();
     displayCharacter(character);
   } catch (error) {
-    results.textContent = error
+    renderError(`Something went wrong ${error.message}. Try again!`)
   }
 }
+
 
 let typingTimer
 
