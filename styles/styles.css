@@ -1,12 +1,12 @@
 .header {
   background: rgba(0, 0, 0, 0.5);
-  padding: 2rem 1rem;
+  padding: 1.5rem 1rem;
 }
 
 .header h1 {
   font-family: "Harry-Potter-font", serif;
-  font-size: 4rem;
-  letter-spacing: 4px;
+  font-size: 2.5rem;
+  letter-spacing: 3px;
   color: #f5d76e;
   margin: 0;
 }
@@ -16,12 +16,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 1rem;
+  padding: 1.5rem 1rem;
   gap: 1.5rem;
 }
 
 #searchInput {
-  width: 300px;
+  width: 90%;
+  max-width: 320px;
   padding: 0.75rem 1rem;
   font-size: 1rem;
   letter-spacing: 2px;
@@ -30,22 +31,27 @@
   outline: none;
   background: rgba(0, 0, 0, 0.8);
   color: #f5d76e;
-  margin-bottom: 2rem;
 }
 
 .container {
   background: rgba(0, 0, 0, 0.75);
   color: #f5d76e;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   letter-spacing: 2px;
-  width: 300px;
+  width: 90%;
+  max-width: 320px;
   padding: 1rem;
   border-radius: 12px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .container h2 {
   font-family: "Harry-Potter-font", serif;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .container img {
@@ -55,10 +61,45 @@
 
 .footer {
   background: rgba(0, 0, 0, 0.5);
-  font-size: 1.5rem;
-  letter-spacing: 3px;
   padding: 1rem;
+
   font-family: "Harry-Potter-font", serif;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
   color: #f5d76e;
+
   margin-top: auto;
+}
+
+@media (min-width: 769px) {
+
+  .header h1 {
+    font-size: 4rem;
+    letter-spacing: 4px;
+  }
+
+  #searchInput {
+    width: 300px;
+  }
+
+  .container {
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    max-width: 650px;
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .container img {
+    width: 40%;
+  }
+
+  .container h2 {
+    font-size: 2rem;
+  }
+
+  .footer {
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+  }
 }
