@@ -2,38 +2,46 @@ const apiUrl = 'https://potterapi-fedeperin.vercel.app/en/characters';
 const searchInput = document.querySelector("#searchInput");
 const results = document.querySelector(".results");
 
+let typingTimer;
+
+const renderError = (message => {
+  const errorMessage = document.createElement("p");
+  errorMessage.textContent = message;
+  errorMessage.classList.add('error');
+
+  results.appendChild(errorMessage);
+})
+
+const getData = async (url , errorMessage ='Something went wrong')=>{
+  const response = await fetch (url);
+    if(!response.ok) {
+      throw new Error (`${errorMessage} (${response.status})`);
+    }
+    return response.json();
+  };
+
 const searchCharacter = async () => {
   let searchValue = searchInput.value.trim();
 
-  console.log(searchValue);
-
+  if (!searchValue) {
+    renderError('Please enter a Harry Potter character name ⚡');
+    return;
+  }
   const url = `${apiUrl}?search=${searchValue}`;
-
   try {
-    const response = await fetch(url);
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok")
-    }
-    const character = await response.json();
+    const character = await getData(url);
     displayCharacter(character);
+
   } catch (error) {
-    results.textContent = error
+    renderError(`Something went wrong ${error.message}. Try again!`)
   }
 }
-
-let typingTimer
-
-searchInput.addEventListener('input', () => {
-  clearTimeout(typingTimer)
-  typingTimer = setTimeout(searchCharacter, 300)
-})
 
 const displayCharacter = (character) => {
   results.innerHTML = "";
 
   if (!character.length) {
-    results.textContent = "No results found.";
+    renderError('No results found.');
     return;
   }
   const result = character[0];
@@ -55,3 +63,8 @@ const displayCharacter = (character) => {
   </div>`
   results.appendChild(resultContainer)
 }
+
+searchInput.addEventListener('input', () => {
+  clearTimeout(typingTimer)
+  typingTimer = setTimeout(searchCharacter, 300)
+})
