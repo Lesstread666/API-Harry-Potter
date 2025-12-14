@@ -13,7 +13,7 @@ const searchCharacter = async () => {
     const response = await fetch(url);
 
     if (!response.ok) {
-      throw new Error("Network reponse was not ok")
+      throw new Error("Network response was not ok")
     }
     const character = await response.json();
     displayCharacter(character);
@@ -43,8 +43,14 @@ const displayCharacter = (character) => {
   const resultContainer = document.createElement("div")
   resultContainer.classList.add("container")
 
-  resultContainer.innerHTML = `<h2>${fullName}</h2>
-  <img src=${image} alt=${fullName} image"></img>
-  `
+  resultContainer.innerHTML =
+    `
+  <img src=${image}>
+  </img><h2>${fullName}</h2>
+  <div>Nickname in the movie: ${nickname} </div>
+  <div>Date of birthday: ${birthdate} </div>
+  <div>House: ${hogwartsHouse} </div>
+  <div>Family: ${children} </div>
+    `
   results.appendChild(resultContainer)
 }
