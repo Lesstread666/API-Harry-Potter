@@ -44,13 +44,14 @@ const displayCharacter = (character) => {
   resultContainer.classList.add("container")
 
   resultContainer.innerHTML =
-    `
-  <img src=${image}>
-  </img><h2>${fullName}</h2>
-  <div>Nickname in the movie: ${nickname} </div>
-  <div>Date of birthday: ${birthdate} </div>
-  <div>House: ${hogwartsHouse} </div>
-  <div>Family: ${children} </div>
-    `
+    `<img src=${image}></img>
+
+   <div class="card-content">
+    <h2>${fullName}</h2>
+    <p><span class="label">Nickname:</span> ${nickname || "—"}</p>
+    <p><span class="label">Birthdate:</span> ${birthdate || "—"}</p>
+    <p><span class="label">House:</span> ${hogwartsHouse || "—"}</p>
+    <p><span class="label">Family:</span> ${children && children.length ? children.join(", ") : "—"}</p>
+  </div>`
   results.appendChild(resultContainer)
 }
