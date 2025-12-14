@@ -1,13 +1,23 @@
+:root {
+  --color-gold: #f5d76e;
+  --color-black-50: rgba(0, 0, 0, 0.5);
+  --color-black-75: rgba(0, 0, 0, 0.75);
+  --color-black-80: rgba(0, 0, 0, 0.8);
+
+  --font-main: Arial, Helvetica, sans-serif;
+  --font-magic: "Harry-Potter-font", serif;
+}
+
 .header {
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--color-black-50);
   padding: 1.5rem 1rem;
 }
 
 .header h1 {
-  font-family: "Harry-Potter-font", serif;
+  font-family: var(--font-magic);
   font-size: 2.5rem;
   letter-spacing: 3px;
-  color: #f5d76e;
+  color: var(--color-gold);
   margin: 0;
 }
 
@@ -29,13 +39,13 @@
   border-radius: 10px;
   border: none;
   outline: none;
-  background: rgba(0, 0, 0, 0.8);
-  color: #f5d76e;
+  background: var(--color-black-80);
+  color: var(--color-gold);
 }
 
 .container {
-  background: rgba(0, 0, 0, 0.75);
-  color: #f5d76e;
+  background: var(--color-black-75);
+  color: var(--color-gold);
   font-size: 1.3rem;
   letter-spacing: 2px;
   width: 90%;
@@ -63,7 +73,7 @@
 }
 
 .card-content h2 {
-  font-family: "Harry-Potter-font", serif;
+  font-family: var(--font-magic);
   font-size: 1.8rem;
   letter-spacing: 2px;
   margin: 0.5rem 0 0.75rem;
@@ -76,20 +86,18 @@
 }
 
 .card-content .label {
-  color: #f5d76e;
+  color: var(--color-gold);
   font-weight: 600;
   letter-spacing: 1px;
 }
 
 .footer {
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--color-black-50);
   padding: 1rem;
-
-  font-family: "Harry-Potter-font", serif;
+  font-family: var(--font-magic);
   font-size: 1.2rem;
   letter-spacing: 2px;
-  color: #f5d76e;
-
+  color: var(--color-gold);
   margin-top: auto;
 }
 
