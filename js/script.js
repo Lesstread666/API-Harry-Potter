@@ -3,22 +3,25 @@ const searchInput = document.querySelector("#searchInput");
 const results = document.querySelector(".results");
 
 const renderError = (message => {
-  results.insertAdjacentText('beforeend', message);
+  const errorMessage = document.createElement("p");
+  errorMessage.textContent = message;
+  errorMessage.classList.add('error');
+
+  results.appendChild(errorMessage);
 })
 
 const searchCharacter = async () => {
   let searchValue = searchInput.value.trim();
-  console.log(searchValue);
   const url = `${apiUrl}?search=${searchValue}`;
-
   try {
     const response = await fetch(url);
-
     if (!response.ok) {
       throw new Error("Network reponse was not ok")
     }
+
     const character = await response.json();
     displayCharacter(character);
+    
   } catch (error) {
     renderError(`Something went wrong ${error.message}. Try again!`)
   }
@@ -36,7 +39,7 @@ const displayCharacter = (character) => {
   results.innerHTML = "";
 
   if (!character.length) {
-    results.textContent = "No results found.";
+    renderError('No results found.');
     return;
   }
   const result = character[0];
