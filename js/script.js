@@ -2,6 +2,7 @@ const apiUrl = 'https://potterapi-fedeperin.vercel.app/en/characters';
 const spellApiUrl = 'https://potterapi-fedeperin.vercel.app/en/spells/random';
 const searchInput = document.querySelector("#searchInput");
 const results = document.querySelector(".results");
+const castSpellButton = document.querySelector("#castSpell");
 
 let typingTimer;
 
