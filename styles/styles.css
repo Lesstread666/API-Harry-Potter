@@ -6,6 +6,7 @@
 
   --font-main: Arial, Helvetica, sans-serif;
   --font-magic: "Harry-Potter-font", serif;
+  --font-states: 'Lora Italic', sans-serif;
 }
 
 .header {
@@ -63,14 +64,6 @@
   width: 100%;
   border-radius: 10px;
 }
-.error {
-  color: #4b1c1c;
-  background-color: #f3e9dc;
-  border-left: 5px solid #7f0909;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  font-family: "Georgia", serif;
-}
 
 .card-content {
   width: 100%;
@@ -107,6 +100,26 @@
   letter-spacing: 2px;
   color: var(--color-gold);
   margin-top: auto;
+}
+
+.loadingState,
+.error {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--color-black-50);
+  font-family: var(--font-states);
+  color: var(--color-gold);
+  font-size: 1.2rem;
+  letter-spacing: 0.2rem;
+  border-radius: 5px;
+}
+
+.error {
+  border-left: 5px solid #7f0909;
+}
+
+.hidden {
+  display: none;
 }
 
 @media (min-width: 769px) {
@@ -156,6 +169,9 @@
     font-size: 1.5rem;
     letter-spacing: 3px;
   }
+
+  .error,
+  .loadingState {
+    font-size: 2rem;
+  }
 }
-
-

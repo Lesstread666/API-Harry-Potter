@@ -1,6 +1,7 @@
 const apiUrl = 'https://potterapi-fedeperin.vercel.app/en/characters';
 const searchInput = document.querySelector("#searchInput");
 const results = document.querySelector(".results");
+const loadingState = document.querySelector('.loadingState');
 
 let typingTimer;
 
@@ -12,13 +13,13 @@ const renderError = (message => {
   results.appendChild(errorMessage);
 })
 
-const getData = async (url , errorMessage ='Something went wrong')=>{
-  const response = await fetch (url);
-    if(!response.ok) {
-      throw new Error (`${errorMessage} (${response.status})`);
-    }
-    return response.json();
-  };
+const getData = async (url, errorMessage = 'Something went wrong') => {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`${errorMessage} (${response.status})`);
+  }
+  return response.json();
+};
 
 const searchCharacter = async () => {
   let searchValue = searchInput.value.trim();
@@ -27,13 +28,16 @@ const searchCharacter = async () => {
     renderError('Please enter a Harry Potter character name ⚡');
     return;
   }
+  loadingState.classList.remove('hidden');
   const url = `${apiUrl}?search=${searchValue}`;
   try {
     const character = await getData(url);
+    loadingState.classList.add('hidden');
     displayCharacter(character);
 
   } catch (error) {
-    renderError(`Something went wrong ${error.message}. Try again!`)
+    loadingState.classList.add('hidden');
+    renderError(`${error.message}. Try again!`)
   }
 }
 
