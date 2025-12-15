@@ -5,7 +5,13 @@ const loadingState = document.querySelector('.loadingState');
 
 let typingTimer;
 
+const clearContainer = (container) => {
+  container.innerHTML = "";
+}
+
 const renderError = (message => {
+  clearContainer(results);
+
   const errorMessage = document.createElement("p");
   errorMessage.textContent = message;
   errorMessage.classList.add('error');
@@ -28,6 +34,7 @@ const searchCharacter = async () => {
     renderError('Please enter a Harry Potter character name ⚡');
     return;
   }
+  clearContainer(results);
   loadingState.classList.remove('hidden');
   const url = `${apiUrl}?search=${searchValue}`;
   try {
@@ -42,7 +49,7 @@ const searchCharacter = async () => {
 }
 
 const displayCharacter = (character) => {
-  results.innerHTML = "";
+  clearContainer(results);
 
   if (!character.length) {
     renderError('No results found.');
@@ -70,5 +77,6 @@ const displayCharacter = (character) => {
 
 searchInput.addEventListener('input', () => {
   clearTimeout(typingTimer)
+  clearContainer(results);
   typingTimer = setTimeout(searchCharacter, 300)
 })

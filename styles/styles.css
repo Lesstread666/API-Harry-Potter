@@ -114,10 +114,6 @@
   border-radius: 5px;
 }
 
-.error {
-  border-left: 5px solid #7f0909;
-}
-
 .hidden {
   display: none;
 }
