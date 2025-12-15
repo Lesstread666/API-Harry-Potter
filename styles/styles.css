@@ -6,6 +6,7 @@
 
   --font-main: Arial, Helvetica, sans-serif;
   --font-magic: "Harry-Potter-font", serif;
+  --font-states: 'Lora Italic', sans-serif;
 }
 
 .header {
@@ -106,35 +107,16 @@
   margin-top: 1rem;
   padding: 0.5rem 1rem;
   background-color: var(--color-black-50);
-  font-family: var(--font-main);
+  font-family: var(--font-states);
   color: var(--color-gold);
   font-size: 1.2rem;
   letter-spacing: 0.2rem;
   border-radius: 5px;
 }
 
-.loadingState {
-  font-style: italic;
-}
-
 .error {
   border-left: 5px solid #7f0909;
 }
-
-.loadingState::after {
-  content: "";
-  display: inline-block;
-  width: 10px;
-  animation: dots 1.5s infinite;
-}
-
-@keyframes dots {
-  0% { content: ""; }
-  33% { content: "."; }
-  66% { content: ".."; }
-  100% { content: "..."; }
-}
-
 
 .hidden {
   display: none;

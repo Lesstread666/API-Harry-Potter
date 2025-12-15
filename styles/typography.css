@@ -1,6 +1,14 @@
 @font-face {
-    font-family: 'Harry-Potter-font';
-    src: url(../fonts/Harry-Potter-font.woff2) format('woff2');
-    font-weight: normal;
+  font-family: 'Harry-Potter-font';
+  src: url(../fonts/Harry-Potter-font.woff2) format('woff2');
+  font-weight: normal;
   font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lora Italic';
+  src: url(../fonts/Lora-Italic.woff2) format('woff2'),
+    url(../fonts/Lora-Italic.woff) format('woff');
+  font-style: italic;
+  font-weight: 400;
 }
