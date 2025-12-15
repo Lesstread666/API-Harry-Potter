@@ -185,25 +185,9 @@
   margin-top: auto;
 }
 
-.loadingState,
-.error {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: var(--color-black-50);
-  font-family: var(--font-states);
-  color: var(--color-gold);
-  font-size: 1.2rem;
-  letter-spacing: 0.2rem;
-  border-radius: 5px;
-}
-
-.hidden {
-  display: none;
-}
-
 @media (min-width: 769px) {
 
-    .header h1 {
+  .header h1 {
     font-size: 4rem;
     letter-spacing: 4px;
   }
@@ -244,13 +228,34 @@
     min-width: 110px;
   }
 
+  .spell-container {
+    flex-direction: row;
+    align-items: flex-start;
+    max-width: 700px; 
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  .spell-container img {
+    width: 50%; 
+    max-height: 400px;
+  }
+
+  .spell-card-content {
+    text-align: left;
+    gap: 1rem;
+  }
+
+  .spell-card-content h2 {
+    font-size: 2.6rem; 
+  }
+
+  .spell-card-content p {
+    font-size: 1.4rem; 
+  }
+
   .footer {
     font-size: 1.5rem;
     letter-spacing: 3px;
-  }
-
-  .error,
-  .loadingState {
-    font-size: 2rem;
   }
 }
