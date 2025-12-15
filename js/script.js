@@ -1,6 +1,8 @@
 const apiUrl = 'https://potterapi-fedeperin.vercel.app/en/characters';
+const spellApiUrl = 'https://potterapi-fedeperin.vercel.app/en/spells/random';;
 const searchInput = document.querySelector("#searchInput");
 const results = document.querySelector(".results");
+const castSpellButton = document.querySelector("#castSpell");
 
 let typingTimer;
 
@@ -12,13 +14,13 @@ const renderError = (message => {
   results.appendChild(errorMessage);
 })
 
-const getData = async (url , errorMessage ='Something went wrong')=>{
-  const response = await fetch (url);
-    if(!response.ok) {
-      throw new Error (`${errorMessage} (${response.status})`);
-    }
-    return response.json();
-  };
+const getData = async (url, errorMessage = 'Something went wrong') => {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`${errorMessage} (${response.status})`);
+  }
+  return response.json();
+};
 
 const searchCharacter = async () => {
   let searchValue = searchInput.value.trim();
@@ -64,7 +66,38 @@ const displayCharacter = (character) => {
   results.appendChild(resultContainer)
 }
 
+const fetchRandomSpell = async () => {
+  try {
+    const spell = await getData(spellApiUrl, "Could not cast a spell");
+    displaySpell(spell);
+  } catch (error) {
+    results.innerHTML = ``;
+    renderError(`Something went wrong ${error.message}. Try again!`)
+  }
+}
+
+const displaySpell = (spell) => {
+  results.innerHTML = ``;
+
+  const spellContainer = document.createElement("div");
+  spellContainer.classList.add("spell-container"); 
+
+  spellContainer.innerHTML = `
+  <img src="./visuals/spells.png" alt="${spell.spell}" />
+    <div class="card-content">
+      <h2>${spell.spell || "—"}</h2>
+      <p><span class="label">Description:</span> ${spell.use || "—"}</p>
+    </div>
+  `;
+
+  results.appendChild(spellContainer);
+}
+
 searchInput.addEventListener('input', () => {
   clearTimeout(typingTimer)
   typingTimer = setTimeout(searchCharacter, 300)
 })
+
+castSpellButton.addEventListener("click", () => {
+  fetchRandomSpell();
+});
