@@ -39,12 +39,12 @@ const searchCharacter = async () => {
   const url = `${apiUrl}?search=${searchValue}`;
   try {
     const character = await getData(url);
-    loadingState.classList.add('hidden');
     displayCharacter(character);
 
   } catch (error) {
-    loadingState.classList.add('hidden');
     renderError(`${error.message}. Try again!`)
+  } finally {
+    loadingState.classList.add('hidden');
   }
 }
 
@@ -55,12 +55,12 @@ const displayCharacter = (characters) => {
     renderError('No results found.');
     return;
   }
-  characters.forEach(character=>{
-  const resultContainer = document.createElement("div")
-  resultContainer.classList.add("container")
+  characters.forEach(character => {
+    const resultContainer = document.createElement("div")
+    resultContainer.classList.add("container")
 
-  resultContainer.innerHTML =
-    `<img src=${character.image}></img>
+    resultContainer.innerHTML =
+      `<img src=${character.image}></img>
 
    <div class="card-content">
     <h2>${character.fullName}</h2>
@@ -70,28 +70,8 @@ const displayCharacter = (characters) => {
     <p><span class="label">Family:</span> ${character.children && character.children.length ? character.children.join(", ") : "—"}</p>
   </div>`
     results.appendChild(resultContainer)
-})
+  })
 }
-
-  //  const result = character[0];
-  // // DATA returns an array
-  // const { fullName, nickname, birthdate, hogwartsHouse, image, children } = result;
-
-  // const resultContainer = document.createElement("div")
-  // resultContainer.classList.add("container")
-
-  // resultContainer.innerHTML =
-  //   `<img src=${image}></img>
-
-  //  <div class="card-content">
-  //   <h2>${fullName}</h2>
-  //   <p><span class="label">Nickname:</span> ${nickname || "—"}</p>
-  //   <p><span class="label">Birthdate:</span> ${birthdate || "—"}</p>
-  //   <p><span class="label">House:</span> ${hogwartsHouse || "—"}</p>
-  //   <p><span class="label">Family:</span> ${children && children.length ? children.join(", ") : "—"}</p>
-  // </div>`
-//   results.appendChild(resultContainer)
-// }
 
 searchInput.addEventListener('input', () => {
   clearTimeout(typingTimer)
