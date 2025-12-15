@@ -1,7 +1,9 @@
 const apiUrl = 'https://potterapi-fedeperin.vercel.app/en/characters';
+const spellApiUrl = 'https://potterapi-fedeperin.vercel.app/en/spells/random';
 const searchInput = document.querySelector("#searchInput");
 const results = document.querySelector(".results");
 const loadingState = document.querySelector('.loadingState');
+const castSpellButton = document.querySelector("#castSpell");
 
 let typingTimer;
 
@@ -69,8 +71,35 @@ const displayCharacter = (characters) => {
     <p><span class="label">House:</span> ${character.hogwartsHouse || "—"}</p>
     <p><span class="label">Family:</span> ${character.children && character.children.length ? character.children.join(", ") : "—"}</p>
   </div>`
-    results.appendChild(resultContainer)
+  results.appendChild(resultContainer)
   })
+}
+
+const fetchRandomSpell = async () => {
+  try {
+    const spell = await getData(spellApiUrl, "Could not cast a spell");
+    displaySpell(spell);
+  } catch (error) {
+    results.innerHTML = ``;
+    renderError(`Something went wrong ${error.message}. Try again!`)
+  }
+}
+
+const displaySpell = (spell) => {
+  results.innerHTML = ``;
+
+  const spellContainer = document.createElement("div");
+  spellContainer.classList.add("spell-container"); 
+
+  spellContainer.innerHTML = `
+  <img src="./visuals/spells.png" alt="${spell.spell}" />
+    <div class="card-content">
+      <h2>${spell.spell || "—"}</h2>
+      <p><span class="label">Description:</span> ${spell.use || "—"}</p>
+    </div>
+  `;
+
+  results.appendChild(spellContainer);
 }
 
 searchInput.addEventListener('input', () => {
@@ -78,3 +107,7 @@ searchInput.addEventListener('input', () => {
   clearContainer(results);
   typingTimer = setTimeout(searchCharacter, 300)
 })
+
+castSpellButton.addEventListener("click", () => {
+  fetchRandomSpell();
+});
