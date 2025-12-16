@@ -47,14 +47,12 @@
   color: var(--color-gold);
 }
 
-#castSpell {
+#castSpell,
+.btn {
   background: var(--color-black-80);
   color: var(--color-gold);
   border: 2px solid var(--color-gold);
-  font-family: var(--font-magic);
-  font-size: 1.5rem;
   letter-spacing: 2px;
-  padding: 1rem;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -63,10 +61,24 @@
 }
 
 #castSpell:hover,
-#castSpell:focus {
+#castSpell:focus,
+.btn:hover,
+.btn:focus {
   background: rgba(0, 0, 0, 0.95);
   box-shadow: var(--glow-gold);
   transform: translateY(-2px);
+}
+
+#castSpell {
+  font-family: var(--font-magic);
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+.btn {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  font-family: var(--font-states);
 }
 
 .container {
@@ -110,21 +122,28 @@
   margin: 0;
   font-size: 1.1rem;
   line-height: 1.6;
+
 }
 
 .card-content .label {
   color: var(--color-gold);
   font-weight: 600;
   letter-spacing: 1px;
+  text-align: left;
+}
+
+.card-content button {
+  margin-top: 0.5rem;
+  align-self: center;
 }
 
 .spell-container {
   background: var(--color-black-75);
   color: var(--color-gold);
-  font-size: 1.5rem; 
+  font-size: 1.5rem;
   letter-spacing: 2px;
   width: 95%;
-  max-width: 500px; 
+  max-width: 500px;
   padding: 1.8rem;
   border-radius: 12px;
   margin-inline: auto;
@@ -132,12 +151,13 @@
   flex-direction: column;
   align-items: center;
   gap: 1.8rem;
+  margin-bottom: 2rem;
 }
 
 .spell-container img {
   width: 100%;
   border-radius: 12px;
-  max-height: 350px; 
+  max-height: 350px;
   object-fit: cover;
 }
 
@@ -151,14 +171,14 @@
 
 .spell-card-content h2 {
   font-family: var(--font-magic);
-  font-size: 2.3rem; 
+  font-size: 2.3rem;
   letter-spacing: 2px;
   margin: 0.5rem 0 0.8rem;
 }
 
 .spell-card-content p {
   margin: 0;
-  font-size: 1.3rem; 
+  font-size: 1.3rem;
   line-height: 1.7;
 }
 
@@ -194,6 +214,25 @@
   display: none;
 }
 
+a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  text-decoration: none;
+  color: var(--gold-soft);
+  font-size: 1.2rem;
+  font-family: var(--font-states);
+  border: 2px solid var(--color-gold);
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  letter-spacing: 0.1rem;
+  background-color: var(--color-black-75);
+}
+
+a:hover,
+a:focus {
+  color: var(--glow-gold);
+}
+
 @media (min-width: 769px) {
 
   .header h1 {
@@ -202,7 +241,7 @@
   }
 
   #searchInput {
-    width: 300px;
+    max-width: 650px;
   }
 
   .container {
@@ -240,13 +279,13 @@
   .spell-container {
     flex-direction: row;
     align-items: flex-start;
-    max-width: 700px; 
+    max-width: 700px;
     padding: 2rem;
     gap: 2rem;
   }
 
   .spell-container img {
-    width: 50%; 
+    width: 50%;
     max-height: 400px;
   }
 
@@ -256,11 +295,11 @@
   }
 
   .spell-card-content h2 {
-    font-size: 2.6rem; 
+    font-size: 2.6rem;
   }
 
   .spell-card-content p {
-    font-size: 1.4rem; 
+    font-size: 1.4rem;
   }
 
   .footer {
