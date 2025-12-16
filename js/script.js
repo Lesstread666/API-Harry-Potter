@@ -57,6 +57,9 @@ const displayCharacter = (characters) => {
     renderError('No results found.');
     return;
   }
+
+  localStorage.setItem('lastViewedCharacter', JSON.stringify(characters[0]));
+
   characters.forEach(character => {
     const resultContainer = document.createElement("div")
     resultContainer.classList.add("container")
@@ -71,7 +74,7 @@ const displayCharacter = (characters) => {
     <p><span class="label">House:</span> ${character.hogwartsHouse || "—"}</p>
     <p><span class="label">Family:</span> ${character.children && character.children.length ? character.children.join(", ") : "—"}</p>
   </div>`
-  results.appendChild(resultContainer)
+    results.appendChild(resultContainer)
   })
 }
 
@@ -89,7 +92,7 @@ const displaySpell = (spell) => {
   results.innerHTML = ``;
 
   const spellContainer = document.createElement("div");
-  spellContainer.classList.add("spell-container"); 
+  spellContainer.classList.add("spell-container");
 
   spellContainer.innerHTML = `
   <img src="./visuals/spells.png" alt="${spell.spell}" />
@@ -102,12 +105,22 @@ const displaySpell = (spell) => {
   results.appendChild(spellContainer);
 }
 
+//Event listeners
 searchInput.addEventListener('input', () => {
   clearTimeout(typingTimer)
   clearContainer(results);
   typingTimer = setTimeout(searchCharacter, 300)
-})
+});
 
 castSpellButton.addEventListener("click", () => {
   fetchRandomSpell();
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  const viewedCharacter = localStorage.getItem('lastViewedCharacter');
+
+  if (viewedCharacter) {
+    const character = JSON.parse(viewedCharacter);
+    displayCharacter([character])
+  }
 });
