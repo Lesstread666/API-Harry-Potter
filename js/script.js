@@ -90,6 +90,7 @@ const fetchRandomSpell = async () => {
 
 const displaySpell = (spell) => {
   results.innerHTML = ``;
+  const isFavorite = isSpellFavourite(spell.index);
 
   const spellContainer = document.createElement("div");
   spellContainer.classList.add("spell-container");
@@ -99,11 +100,63 @@ const displaySpell = (spell) => {
     <div class="card-content">
       <h2>${spell.spell || "—"}</h2>
       <p><span class="label">Description:</span> ${spell.use || "—"}</p>
+      <button class ="btn">${isFavorite ? '🪄 Remove from favourites' : '🪄 Add to favourites '}</button>
     </div>
   `;
 
+  const button = spellContainer.querySelector('.btn');
+  button.addEventListener('click', () => {
+    toggleFavoriteButton(spell, button);
+  })
+
   results.appendChild(spellContainer);
 }
+
+const saveSpells = (spells => {
+  localStorage.setItem('favouriteSpells', JSON.stringify(spells))
+});
+
+const favouriteSpells = () => {
+  return JSON.parse(localStorage.getItem('favouriteSpells') || '[]');
+};
+
+const isSpellFavourite = (spellIndex => {
+  const favourites = favouriteSpells();
+  return favourites.some(spell => spell.index === spellIndex);
+});
+
+const addFavoriteSpell = (spell => {
+  const favourites = favouriteSpells();
+
+  if (!favourites.some(s => s.index === spell.index)) {
+
+    const addSpell = {
+      index: spell.index,
+      spell: spell.spell,
+      use: spell.use
+    }
+    favourites.push(addSpell);
+    saveSpells(favourites);
+    alert("Added to favourites!");
+  }
+})
+
+const removeFavoriteSpell = (index => {
+  const favourites = favouriteSpells().filter(i => i.index !== index);
+  saveSpells(favourites);
+  alert("Removed from favourites!");
+})
+
+const toggleFavoriteButton = (spell, element) => {
+  if (isSpellFavourite(spell.index)) {
+    removeFavoriteSpell(spell.index);
+    element.textContent = '🪄 Add to favourites ';
+  } else {
+    addFavoriteSpell(spell);
+    element.textContent = '🪄 Remove from favourites'
+  }
+}
+
 
 //Event listeners
 searchInput.addEventListener('input', () => {
