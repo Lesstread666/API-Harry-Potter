@@ -18,85 +18,97 @@
 }
 
 .header h1 {
+  color: var(--color-gold);
   font-family: var(--font-magic);
   font-size: 2.5rem;
   letter-spacing: 3px;
-  color: var(--color-gold);
   margin: 0;
 }
 
 .main {
-  flex: 1;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 1.5rem 1rem;
+  flex: 1;
   gap: 1.5rem;
+  padding: 1.5rem 1rem;
 }
 
 #searchInput {
-  width: 90%;
-  max-width: 320px;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  letter-spacing: 2px;
+  background: var(--color-black-80);
   border-radius: 10px;
   border: none;
-  outline: none;
-  background: var(--color-black-80);
   color: var(--color-gold);
+  font-size: 1rem;
+  letter-spacing: 2px;
+  max-width: 320px;
+  outline: none;
+  padding: 0.75rem 1rem;
+  width: 90%;
 }
 
-#castSpell {
+#castSpell,
+.btn {
   background: var(--color-black-80);
-  color: var(--color-gold);
-  border: 2px solid var(--color-gold);
-  font-family: var(--font-magic);
-  font-size: 1.5rem;
-  letter-spacing: 2px;
-  padding: 1rem;
   border-radius: 12px;
+  border: 2px solid var(--color-gold);
+  color: var(--color-gold);
   cursor: pointer;
+  letter-spacing: 2px;
+  max-width: 300px;
   transition: all 0.3s ease;
   width: 80%;
-  max-width: 300px;
 }
 
 #castSpell:hover,
-#castSpell:focus {
+#castSpell:focus,
+.btn:hover,
+.btn:focus {
   background: rgba(0, 0, 0, 0.95);
   box-shadow: var(--glow-gold);
   transform: translateY(-2px);
 }
 
-.container {
-  background: var(--color-black-75);
-  color: var(--color-gold);
-  font-size: 1.3rem;
-  letter-spacing: 2px;
-  width: 90%;
-  max-width: 320px;
+#castSpell {
+  font-family: var(--font-magic);
+  font-size: 1.5rem;
   padding: 1rem;
+}
+
+.btn {
+  font-family: var(--font-states);
+  font-size: 1.2rem;
+  padding: 0.5rem;
+}
+
+.container {
+  align-items: center;
+  background: var(--color-black-75);
   border-radius: 12px;
-  margin-inline: auto;
+  color: var(--color-gold);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  font-size: 1.3rem;
   gap: 1rem;
+  letter-spacing: 2px;
   margin-bottom: 2rem;
+  margin-inline: auto;
+  max-width: 320px;
+  padding: 1rem;
+  width: 90%;
 }
 
 .container img {
-  width: 100%;
   border-radius: 10px;
+  width: 100%;
 }
 
 .card-content {
-  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
   text-align: center;
+  width: 100%;
 }
 
 .card-content h2 {
@@ -107,59 +119,66 @@
 }
 
 .card-content p {
-  margin: 0;
   font-size: 1.1rem;
   line-height: 1.6;
+  margin: 0;
 }
 
 .card-content .label {
   color: var(--color-gold);
   font-weight: 600;
   letter-spacing: 1px;
+  text-align: left;
+}
+
+.card-content button {
+  align-self: center;
+  margin-top: 0.5rem;
 }
 
 .spell-container {
+  align-items: center;
   background: var(--color-black-75);
-  color: var(--color-gold);
-  font-size: 1.5rem; 
-  letter-spacing: 2px;
-  width: 95%;
-  max-width: 500px; 
-  padding: 1.8rem;
   border-radius: 12px;
-  margin-inline: auto;
+  color: var(--color-gold);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  font-size: 1.5rem;
   gap: 1.8rem;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+  margin-inline: auto;
+  max-width: 500px;
+  padding: 1.8rem;
+  width: 95%;
 }
 
 .spell-container img {
-  width: 100%;
   border-radius: 12px;
-  max-height: 350px; 
+  max-height: 350px;
   object-fit: cover;
+  width: 100%;
 }
 
 .spell-card-content {
-  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
   text-align: center;
+  width: 100%;
 }
 
 .spell-card-content h2 {
   font-family: var(--font-magic);
-  font-size: 2.3rem; 
+  font-size: 2.3rem;
   letter-spacing: 2px;
   margin: 0.5rem 0 0.8rem;
 }
 
 .spell-card-content p {
-  margin: 0;
-  font-size: 1.3rem; 
+  font-size: 1.3rem;
   line-height: 1.7;
+  margin: 0;
 }
 
 .spell-card-content .label {
@@ -170,28 +189,65 @@
 
 .footer {
   background: var(--color-black-50);
-  padding: 1rem;
+  color: var(--color-gold);
   font-family: var(--font-magic);
   font-size: 1.2rem;
   letter-spacing: 2px;
-  color: var(--color-gold);
   margin-top: auto;
+  padding: 1rem;
 }
 
 .loadingState,
-.error {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
+.error,
+.confirmed,
+.empty-list {
   background-color: var(--color-black-50);
-  font-family: var(--font-states);
+  border-radius: 5px;
   color: var(--color-gold);
+  font-family: var(--font-states);
   font-size: 1.2rem;
   letter-spacing: 0.2rem;
-  border-radius: 5px;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.confirmed {
+  animation: fadeIn 0.3s ease;
 }
 
 .hidden {
   display: none;
+}
+
+a {
+  background-color: var(--color-black-75);
+  border-radius: 10px;
+  border: 2px solid var(--color-gold);
+  color: var(--gold-soft);
+  display: inline-block;
+  font-family: var(--font-states);
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: var(--glow-gold);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (min-width: 769px) {
@@ -202,25 +258,25 @@
   }
 
   #searchInput {
-    width: 300px;
+    max-width: 650px;
   }
 
   .container {
-    flex-direction: row;
     align-items: flex-start;
+    flex-direction: row;
+    gap: 1.5rem;
     max-width: 650px;
     padding: 1.5rem;
-    gap: 1.5rem;
   }
 
   .container img {
-    width: 40%;
     flex-shrink: 0;
+    width: 40%;
   }
 
   .card-content {
-    text-align: left;
     gap: 0.75rem;
+    text-align: left;
   }
 
   .card-content h2 {
@@ -238,29 +294,29 @@
   }
 
   .spell-container {
-    flex-direction: row;
     align-items: flex-start;
-    max-width: 700px; 
-    padding: 2rem;
+    flex-direction: row;
     gap: 2rem;
+    max-width: 700px;
+    padding: 2rem;
   }
 
   .spell-container img {
-    width: 50%; 
     max-height: 400px;
+    width: 50%;
   }
 
   .spell-card-content {
-    text-align: left;
     gap: 1rem;
+    text-align: left;
   }
 
   .spell-card-content h2 {
-    font-size: 2.6rem; 
+    font-size: 2.6rem;
   }
 
   .spell-card-content p {
-    font-size: 1.4rem; 
+    font-size: 1.4rem;
   }
 
   .footer {
@@ -269,7 +325,9 @@
   }
 
   .error,
-  .loadingState {
+  .loadingState,
+  .confirmed,
+  .empty-list {
     font-size: 2rem;
   }
 }

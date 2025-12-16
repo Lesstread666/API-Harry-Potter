@@ -1,9 +1,11 @@
-# 🪄 Harry Potter Character Finder
+# 🪄 World of Wizardry
 
 ## ✨ Overview
-A simple web app that lets user search for characters from the **Harry Potter** universe using the free **PotterApi**
-
-This project is lightweight, beginner-friendly web page where the users can type into a search bar and instantly receive character information fetched from an external API.
+It is a fun, interactive web application that allows users to explore the Wizarding World by:
+- 🔍 Searching for Harry Potter characters
+- 🪄 Casting random spells
+- 🗂️ Saving favourite spells
+- 📜 Automatically restoring the last viewed character upon page load
 
 The app uses:
 > HTML/CSS/JavaScript
@@ -12,11 +14,34 @@ The app uses:
 
 >PotterAPI → https://potterapi-fedeperin.vercel.app/
 
-As the user types, the app sends a request to the API with a ?search= parameter and displays matching character.
-
 ## ⚙️ Core Features
+**🔍 Character Search**
+- Search for characters using a search input
+- Display multiple matching characters when available
+- Shows character details
+- Last viewed character is saved in **_localStorage_** and restored on page load
+
+**🪄 Random Spell Casting**
+- Button fetches a random spell from the spells endpoint
+- Displays spells name and use
+- Users can:
+   > Add spells to favourites
+
+  > Remove spells from favourites
+- Button state updates dynamically based on status
+
+**⚡️ Favourites**
+- Favourite spells are stored using localStorage
+- Prevents duplicate spells from being added
+- Confirmation message to provide user feedback.
 
 ## 🚀 How It Works
+1. User types into the search input
+2. Matching characters are displayed dynamically
+3. User can switch context and cast a random spell
+4. Favourite spells and last viewed character are saved locally
+
+Only one feature renders at a time to keep the interface clean and focused.
 
 ## 🧰 Built With
 - 🖥️ **HTML5** – For pages and contents structure
@@ -32,6 +57,8 @@ Full documentation:
 
 
 ## 🚀 Future Improvements or Plans
+- Filter character by hogwarts house
+- Optional light and dark mode
 
 ## Acknowledgements
 A big thanks to everyone who shares feedback and especially to our teacher , **Antonella Morittu** who introduced us to the world of APIs.
@@ -62,7 +89,7 @@ git push origin improve-feature
 ## 🧙‍♂️ Team
 A simple project made for fun by two developers who love magic ✨
 
-✨[Vlad](https://github.com/Lesstread666)
+✨ [Vlad](https://github.com/Lesstread666)
 
 ❤️ [Michelle](https://github.com/themichellesarmiento)
   

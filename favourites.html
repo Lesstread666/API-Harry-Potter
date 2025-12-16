@@ -4,26 +4,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Harry Potter Webpage</title>
+  <title>Favourites</title>
   <link rel="stylesheet" href="./styles/global.css">
   <link rel="stylesheet" href="./styles/styles.css">
   <link rel="stylesheet" href="./styles/typography.css">
-  <script src="./js/script.js" defer></script>
+  <script src="./js/favourites.js" defer></script>
 </head>
 
 <body>
-  
+
   <header class="header">
-    <h1>Welcome to the World of Wizardry</h1>
-    <a href="favourites.html">View Favourite Spells</a>
+    <h1>Favourite Spells</h1>
+    <a href="index.html">Home</a>
   </header>
 
   <main class="main">
-    <input id="searchInput" placeholder="Search for a character..." />
-    <button id="castSpell">Cast a spell</button>
-    <div class="results"></div>
-    <div class="confirmation"></div>
-    <div class="loadingState hidden">Searching the wizarding world..</div>
+    <section>
+      <div class="favourites-container"></div>
+    </section>
   </main>
 
   <footer class="footer">
