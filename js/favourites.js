@@ -30,7 +30,7 @@ const showFavourites = () => {
   const savedSpells = getFavouriteSpells();
 
   if (savedSpells.length === 0) {
-    container.innerHTML = `<p>No favourite spells added yet.</p>`
+    container.innerHTML = `<p class="empty-list">No favourite spells added yet.</p>`
     return;
   }
 

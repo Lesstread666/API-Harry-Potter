@@ -3,6 +3,7 @@ const spellApiUrl = 'https://potterapi-fedeperin.vercel.app/en/spells/random';
 const searchInput = document.querySelector("#searchInput");
 const results = document.querySelector(".results");
 const loadingState = document.querySelector('.loadingState');
+const confirmMessageContainer = document.querySelector('.confirmation');
 const castSpellButton = document.querySelector("#castSpell");
 
 let typingTimer;
@@ -83,13 +84,13 @@ const fetchRandomSpell = async () => {
     const spell = await getData(spellApiUrl, "Could not cast a spell");
     displaySpell(spell);
   } catch (error) {
-    results.innerHTML = ``;
+    clearContainer(results);
     renderError(`Something went wrong ${error.message}. Try again!`)
   }
 }
 
 const displaySpell = (spell) => {
-  results.innerHTML = ``;
+  clearContainer(results);
   const isFavorite = isSpellFavourite(spell.index);
 
   const spellContainer = document.createElement("div");
@@ -111,6 +112,20 @@ const displaySpell = (spell) => {
 
   results.appendChild(spellContainer);
 }
+
+const confirmationMessage = (message => {
+  clearContainer(confirmMessageContainer);
+
+  const msg = document.createElement('p');
+  msg.textContent = message;
+  msg.classList.add('confirmed');
+
+  confirmMessageContainer.appendChild(msg);
+
+  setTimeout(() => {
+    clearContainer(confirmMessageContainer);
+  }, 3000)
+});
 
 const saveSpells = (spells => {
   localStorage.setItem('favouriteSpells', JSON.stringify(spells))
@@ -137,17 +152,18 @@ const addFavoriteSpell = (spell => {
     }
     favourites.push(addSpell);
     saveSpells(favourites);
-    alert("Added to favourites!");
+    confirmationMessage("Added to favourites!");
   }
 })
 
 const removeFavoriteSpell = (index => {
   const favourites = favouriteSpells().filter(i => i.index !== index);
   saveSpells(favourites);
-  alert("Removed from favourites!");
+  confirmationMessage("Removed from favourites!");
 })
 
 const toggleFavoriteButton = (spell, element) => {
+
   if (isSpellFavourite(spell.index)) {
     removeFavoriteSpell(spell.index);
     element.textContent = '🪄 Add to favourites ';
@@ -156,7 +172,6 @@ const toggleFavoriteButton = (spell, element) => {
     element.textContent = '🪄 Remove from favourites'
   }
 }
-
 
 //Event listeners
 searchInput.addEventListener('input', () => {
